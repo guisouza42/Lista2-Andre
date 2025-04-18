@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+public class Urna {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int jairRodrigues = 0;
+        int carlosLuz = 0;
+        int nevesRocha = 0;
+        int nulo = 0;
+        int branco = 0;
+        int totalVotos = 0;
+
+        int voto;
+
+        do {
+            System.out.println("\nAs opções são:");
+            System.out.println("1. Candidato Jair Rodrigues");
+            System.out.println("2. Candidato Carlos Luz");
+            System.out.println("3. Candidato Neves Rocha");
+            System.out.println("4. Nulo");
+            System.out.println("5. Branco");
+            System.out.println("6. Encerrar votação");
+            System.out.print("Entre com o seu voto: ");
+            voto = scanner.nextInt();
+
+            switch (voto) {
+                case 1:
+                    jairRodrigues++;
+                    totalVotos++;
+                    break;
+                case 2:
+                    carlosLuz++;
+                    totalVotos++;
+                    break;
+                case 3:
+                    nevesRocha++;
+                    totalVotos++;
+                    break;
+                case 4:
+                    nulo++;
+                    totalVotos++;
+                    break;
+                case 5:
+                    branco++;
+                    totalVotos++;
+                    break;
+                case 6:
+                    System.out.println("\nEncerrando votação...\n");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+
+        } while (voto != 6);
+
+        if (totalVotos == 0) {
+            System.out.println("Nenhum voto foi registrado.");
+        } else {
+            System.out.println("RESULTADO DA VOTAÇÃO:");
+            System.out.println("Jair Rodrigues: " + jairRodrigues + " votos");
+            System.out.println("Carlos Luz: " + carlosLuz + " votos");
+            System.out.println("Neves Rocha: " + nevesRocha + " votos");
+            System.out.println("Nulos: " + nulo + " votos (" + (nulo * 100.0 / totalVotos) + "%)");
+            System.out.println("Brancos: " + branco + " votos (" + (branco * 100.0 / totalVotos) + "%)");
+
+            // Determina o vencedor
+            if (jairRodrigues > carlosLuz && jairRodrigues > nevesRocha) {
+                System.out.println("Candidato vencedor: Jair Rodrigues");
+            } else if (carlosLuz > jairRodrigues && carlosLuz > nevesRocha) {
+                System.out.println("Candidato vencedor: Carlos Luz");
+            } else if (nevesRocha > jairRodrigues && nevesRocha > carlosLuz) {
+                System.out.println("Candidato vencedor: Neves Rocha");
+            } else {
+                System.out.println("Houve um empate entre os candidatos.");
+            }
+        }
+
+        scanner.close();
+    }
+}
